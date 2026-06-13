@@ -1,0 +1,23 @@
+{
+  "heroText": "Big TITLE!!!!",
+  "mission": "I dunno.",
+  "description": "General Description.",
+  "focusAreas": [
+    {
+      "title": "Mechanical Engineering",
+      "description": "Can talk about what we do for mechanical engineering stuff- 3D printing, rapid prototyping, modelling, FEA, etcetera etcetera. "
+    },
+    {
+      "title": "Embedded Systems",
+      "description": "Multi-sensor fusion, low-power Bluetooth (BLE) telemetry pipelines, 6-DOF IMUs, and custom capacitive flex arrays for real-time biomechanical data."
+    },
+    {
+      "title": "Clinical Medicine",
+      "description": "Direct validation with clinical collaborators and Western faculty, focusing on objective recovery metrics and EHR-compatible clinical reporting."
+    }
+  ],
+  "socials": {
+    "instagram": "https://www.instagram.com/westernengbiomedclub/",
+    "linkedin": "https://www.linkedin.com/company/western-engineering-biomedical-club/"
+  }
+}

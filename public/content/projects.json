@@ -1,0 +1,104 @@
+{
+  "projects": [
+    {
+      "disciplines": [
+        "Mechanical Design",
+        "Embedded Systems",
+        "Clinical Diagnostics",
+        "Wearables"
+      ],
+      "coverImage": "/assets/images/mustangmotion/cover.jpg",
+      "summary": "A smart diagnostic knee brace that replaces subjective clinical observation with sensor-fused, real-time biomechanical data.",
+      "slug": "mustangmotion",
+      "tagline": "Smart diagnostic knee brace",
+      "detail": {
+        "problem": "Orthopedic assessment of knee function remains largely subjective in outpatient settings. Physical therapists and orthopedic surgeons rely on manual goniometry, self-reported pain scores, and visual gait observation — methods with well-documented inter-rater variability. For post-operative patients recovering from ACL reconstruction or total knee arthroplasty, the absence of objective, continuous measurement means that clinicians have limited visibility into whether rehabilitation milestones are being met between appointments. MustangMotion is designed to close this gap.",
+        "mechanical": "The brace was engineered against two competing constraints: structural rigidity sufficient to maintain precise sensor alignment through the full range of knee flexion (0°–135°), and a low-profile form factor that allows unobtrusive wear beneath standard athletic and clinical attire.\n\nThe housing is fabricated from glass-filled nylon using selective laser sintering (SLS), providing the strength-to-weight ratio required for a wearable that must survive repeated loading cycles without dimensional deformation at the sensor mounting points. Hinge joints at the medial and lateral condyle landmarks permit natural knee articulation while maintaining rigid positional reference for the flex sensor array.\n\nPatient fit is addressed through dual-locking Velcro retention straps and an anterior patella relief cutout, accommodating a thigh circumference range of 30–50 cm without patient-specific fabrication. All electronic modules — including the flex sensor array, inertial measurement unit, and Bluetooth system-on-chip — are seated in recessed, shielded pockets within the lateral housing rail. This minimises protrusion during ambulation and protects components from the compressive loading that occurs during normal gait.\n\nThe two-piece shell design allows the electronic assembly to be removed for charging and data transfer without disturbing the fit of the brace itself, a feature that was driven directly by physiotherapy feedback during early user testing.",
+        "clinical": {
+          "intro": "MustangMotion targets two primary clinical workflows:",
+          "workflows": [
+            {
+              "title": "Post-operative rehabilitation monitoring",
+              "description": "Patients recovering from ACL/PCL reconstruction and total knee arthroplasty (TKA) produce quantitative range-of-motion recovery curves that directly inform therapy progression decisions. The device captures these curves continuously across home rehabilitation sessions, generating a data record that a clinician can review remotely rather than relying solely on a fortnightly in-clinic measurement."
+            },
+            {
+              "title": "Outpatient biomechanical screening",
+              "description": "For patients with osteoarthritis, patellofemoral pain syndrome, or suspected medial/lateral compartment loading imbalance, gait asymmetry and compensatory movement patterns are diagnostically significant. MustangMotion's symmetry index and angular velocity profiles surface these patterns in a standardized format that translates directly into clinical decision-making."
+            }
+          ],
+          "outro": "The device outputs a structured clinical report — including gait symmetry index, peak flexion angle, angular velocity profiles, and step cadence — formatted for compatibility with electronic health record (EHR) export."
+        },
+        "specs": [
+          {
+            "parameter": "Flex sensing",
+            "specification": "3-axis capacitive flex sensor array"
+          },
+          {
+            "parameter": "Motion sensing",
+            "specification": "6-DOF IMU (MPU-6050)"
+          },
+          {
+            "parameter": "Connectivity",
+            "specification": "Bluetooth 5.0 Low Energy"
+          },
+          {
+            "parameter": "Housing material",
+            "specification": "SLS glass-filled nylon, dual-rail design"
+          },
+          {
+            "parameter": "Battery",
+            "specification": "400 mAh LiPo, ~8 hours continuous operation"
+          },
+          {
+            "parameter": "Data output",
+            "specification": "JSON over BLE → clinical web dashboard"
+          },
+          {
+            "parameter": "Patient fit range",
+            "specification": "30–50 cm thigh circumference"
+          },
+          {
+            "parameter": "Flex range",
+            "specification": "0°–135°"
+          }
+        ]
+      },
+      "status": "completed",
+      "title": "MustangMotion",
+      "id": "mustangmotion",
+      "year": 2024
+    },
+    {
+      "disciplines": [
+        "Mechanical Engineering"
+      ],
+      "summary": "Testing",
+      "slug": "test",
+      "tagline": "testing",
+      "detail": {
+        "problem": "I was testing this",
+        "mechanical": "I'm testing this",
+        "clinical": {
+          "intro": "She test on my test till I test",
+          "outro": "Test",
+          "workflows": [
+            {
+              "title": "Test",
+              "description": "Test"
+            }
+          ]
+        },
+        "specs": [
+          {
+            "parameter": "Test",
+            "specification": "Test"
+          }
+        ]
+      },
+      "status": "completed",
+      "title": "TEST!",
+      "id": "test",
+      "year": 2035
+    }
+  ]
+}

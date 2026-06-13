@@ -1,0 +1,40 @@
+{
+  "members": [
+    {
+      "name": "Marcus Vance",
+      "role": "Co-Founder & President",
+      "discipline": "Integrated Engineering & Medicine",
+      "image": "/assets/images/team/marcus-vance.jpg"
+    },
+    {
+      "name": "Sophia Chen",
+      "role": "VP of Software Systems",
+      "discipline": "Software Engineering & Biomedical Science",
+      "image": "/assets/images/team/sophia-chen.jpg"
+    },
+    {
+      "name": "Jessica Kovalenko",
+      "role": "VP of Mechanical Design",
+      "discipline": "Mechanical Engineering",
+      "image": "/assets/images/team/jessica-kovalenko.jpg"
+    },
+    {
+      "name": "Arjun Mehta",
+      "role": "Embedded Systems Lead",
+      "discipline": "Electrical & Computer Engineering",
+      "image": "/assets/images/team/arjun-mehta.jpg"
+    },
+    {
+      "name": "Emily Watson",
+      "role": "Clinical Validation Lead",
+      "discipline": "Kinesiology & Rehabilitation Sciences",
+      "image": "/assets/images/team/emily-watson.jpg"
+    },
+    {
+      "name": "Dr. Liam Patel",
+      "role": "Faculty Advisor",
+      "discipline": "Mechanical & Materials Engineering",
+      "image": "/assets/images/team/liam-patel.jpg"
+    }
+  ]
+}
