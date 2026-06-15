@@ -1,33 +1,33 @@
 {
   "members": [
     {
-      "name": "Marcus Vance",
-      "role": "Co-Founder & President",
-      "discipline": "Integrated Engineering & Medicine",
+      "name": "Noah Park",
+      "role": "VP Design",
+      "discipline": "CO OP Yr - Mechanical and Biomedical Engineering ",
       "image": "/assets/images/team/marcus-vance.jpg"
     },
     {
-      "name": "Sophia Chen",
-      "role": "VP of Software Systems",
-      "discipline": "Software Engineering & Biomedical Science",
+      "name": "Nathan Killinger",
+      "role": "VP Design",
+      "discipline": "CO OP Yr - Mechatronics Systems Engineering ",
       "image": "/assets/images/team/sophia-chen.jpg"
     },
     {
-      "name": "Jessica Kovalenko",
-      "role": "VP of Mechanical Design",
+      "name": "Ryan Jin",
+      "role": "3rd Yr - Mechanical Design Lead",
       "discipline": "Mechanical Engineering",
       "image": "/assets/images/team/jessica-kovalenko.jpg"
     },
     {
-      "name": "Arjun Mehta",
-      "role": "Embedded Systems Lead",
-      "discipline": "Electrical & Computer Engineering",
+      "name": "Janik",
+      "role": "Software Systems Lead",
+      "discipline": "4th Yr - Mechatronics and Artificial Intelligence Systems Engineering ",
       "image": "/assets/images/team/arjun-mehta.jpg"
     },
     {
-      "name": "Emily Watson",
-      "role": "Clinical Validation Lead",
-      "discipline": "Kinesiology & Rehabilitation Sciences",
+      "name": "Vishwa Prajapati",
+      "role": "Electrical Design Lead",
+      "discipline": "5th Yr - Electrical Systems Engineering ",
       "image": "/assets/images/team/emily-watson.jpg"
     },
     {
