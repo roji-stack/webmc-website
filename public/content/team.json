@@ -14,8 +14,8 @@
     },
     {
       "name": "Ryan Jin",
-      "role": "3rd Yr - Mechanical Design Lead",
-      "discipline": "Mechatronics Systems and Biomedical Engineering ",
+      "role": "Mechanical Design Lead",
+      "discipline": "3rd Yr - Mechatronics Systems and Biomedical Engineering ",
       "image": "/assets/images/team/jessica-kovalenko.jpg"
     },
     {
@@ -29,12 +29,6 @@
       "role": "Electrical Design Lead",
       "discipline": "5th Yr - Electrical Systems Engineering ",
       "image": "/assets/images/team/emily-watson.jpg"
-    },
-    {
-      "name": "Dr. Liam Patel",
-      "role": "Faculty Advisor",
-      "discipline": "Mechanical & Materials Engineering",
-      "image": "/assets/images/team/liam-patel.jpg"
     }
   ]
 }
