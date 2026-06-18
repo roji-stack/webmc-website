@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "decap-cms-app": "^3.14.0",
     "lucide-react": "^0.468.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",

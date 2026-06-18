@@ -10,6 +10,40 @@
       "coverImage": "/assets/images/webmc.png",
       "summary": "A smart diagnostic knee brace that replaces subjective clinical observation with sensor-fused, real-time biomechanical data.",
       "slug": "mustangmotion",
+      "content_blocks": [
+        {
+          "type": "gallery_block",
+          "images": [
+            {
+              "image": "/assets/images/gallery2_mustang.png",
+              "caption": "Sensor-fused real-time knee brace assembly"
+            },
+            {
+              "image": "/assets/images/gallery3_mustang.png",
+              "caption": "Clinical testing under active range of motion flexion"
+            }
+          ]
+        },
+        {
+          "type": "text_block",
+          "title": "Mechanical Housing & Ergonomic Design",
+          "text": "The brace was engineered against two competing constraints: structural rigidity sufficient to maintain precise sensor alignment through the full range of knee flexion (0°–135°), and a low-profile form factor that allows unobtrusive wear beneath standard athletic and clinical attire.\n\nThe housing is fabricated from glass-filled nylon using selective laser sintering (SLS), providing the strength-to-weight ratio required for a wearable that must survive repeated loading cycles without dimensional deformation at the sensor mounting points. Hinge joints at the medial and lateral condyle landmarks permit natural knee articulation while maintaining rigid positional reference for the flex sensor array.\n\nPatient fit is addressed through dual-locking Velcro retention straps and an anterior patella relief cutout, accommodating a thigh circumference range of 30–50 cm without patient-specific fabrication. All electronic modules — including the flex sensor array, inertial measurement unit, and Bluetooth system-on-chip — are seated in recessed, shielded pockets within the lateral housing rail. This minimises protrusion during ambulation and protects components from the compressive loading that occurs during normal gait.\n\nThe two-piece shell design allows the electronic assembly to be removed for charging and data transfer without disturbing the fit of the brace itself, a feature that was driven directly by physiotherapy feedback during early user testing."
+        },
+        {
+          "type": "text_block",
+          "title": "Technical Specifications",
+          "text": "| Parameter | Specification |\n| :--- | :--- |\n| **Flex sensing** | 3-axis capacitive flex sensor array |\n| **Motion sensing** | 6-DOF IMU (MPU-6050) |\n| **Connectivity** | Bluetooth 5.0 Low Energy |\n| **Housing material** | SLS glass-filled nylon, dual-rail design |\n| **Battery** | 400 mAh LiPo, ~8 hours continuous operation |\n| **Data output** | JSON over BLE &rarr; clinical web dashboard |\n| **Patient fit range** | 30&ndash;50 cm thigh circumference |\n| **Flex range** | 0&deg;&ndash;135&deg; |"
+        },
+        {
+          "type": "text_block",
+          "title": "Clinical Utility",
+          "text": "MustangMotion targets two primary clinical workflows:\n\n### Post-operative rehabilitation monitoring\nPatients recovering from ACL/PCL reconstruction and total knee arthroplasty (TKA) produce quantitative range-of-motion recovery curves that directly inform therapy progression decisions. The device captures these curves continuously across home rehabilitation sessions, generating a data record that a clinician can review remotely rather than relying solely on a fortnightly in-clinic measurement.\n\n### Outpatient biomechanical screening\nFor patients with osteoarthritis, patellofemoral pain syndrome, or suspected medial/lateral compartment loading imbalance, gait asymmetry and compensatory movement patterns are diagnostically significant. MustangMotion's symmetry index and angular velocity profiles surface these patterns in a format that translates directly into clinical decision-making."
+        },
+        {
+          "type": "video_block",
+          "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        }
+      ],
       "tagline": "Smart diagnostic knee brace",
       "detail": {
         "problem": "Orthopedic assessment of knee function remains largely subjective in outpatient settings. Physical therapists and orthopedic surgeons rely on manual goniometry, self-reported pain scores, and visual gait observation — methods with well-documented inter-rater variability. For post-operative patients recovering from ACL reconstruction or total knee arthroplasty, the absence of objective, continuous measurement means that clinicians have limited visibility into whether rehabilitation milestones are being met between appointments. MustangMotion is designed to close this gap.",
@@ -64,6 +98,7 @@
         ]
       },
       "status": "completed",
+      "hero_background": "/assets/images/hero_bg_mustang.png",
       "title": "MustangMotion",
       "id": "mustangmotion",
       "year": 2024
@@ -99,7 +134,14 @@
       "status": "completed",
       "title": "TEST!",
       "id": "test",
-      "year": 2035
+      "year": 2035,
+      "content_blocks": [
+        {
+          "type": "text_block",
+          "title": "Project Overview",
+          "text": "This is a placeholder project created for testing layout configurations and CMS integration blocks."
+        }
+      ]
     }
   ]
 }

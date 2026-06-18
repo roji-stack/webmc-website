@@ -34,6 +34,7 @@ collections:
               - label: "Tagline"
                 name: "tagline"
                 widget: "string"
+                required: false
               - label: "Status"
                 name: "status"
                 widget: "select"
@@ -41,62 +42,125 @@ collections:
                   - "active"
                   - "completed"
                   - "paused"
+                required: false
               - label: "Year"
                 name: "year"
                 widget: "number"
                 value_type: "int"
+                required: false
               - label: "Disciplines"
                 name: "disciplines"
                 widget: "list"
+                required: false
                 field:
                   name: "discipline"
                   widget: "string"
               - label: "Cover Image"
                 name: "coverImage"
                 widget: "image"
+                required: false
+              - label: "Hero Background"
+                name: "hero_background"
+                widget: "image"
+                required: false
               - label: "Summary"
                 name: "summary"
                 widget: "text"
+                required: false
               - label: "Detail"
                 name: "detail"
                 widget: "object"
+                required: false
                 fields:
                   - label: "Problem"
                     name: "problem"
                     widget: "text"
+                    required: false
                   - label: "Mechanical Design"
                     name: "mechanical"
                     widget: "text"
+                    required: false
                   - label: "Clinical"
                     name: "clinical"
                     widget: "object"
+                    required: false
                     fields:
                       - label: "Introduction"
                         name: "intro"
                         widget: "string"
+                        required: false
                       - label: "Workflows"
                         name: "workflows"
                         widget: "list"
+                        required: false
                         fields:
                           - label: "Title"
                             name: "title"
                             widget: "string"
+                            required: false
                           - label: "Description"
                             name: "description"
                             widget: "text"
+                            required: false
                       - label: "Outro"
                         name: "outro"
                         widget: "string"
+                        required: false
                   - label: "Specifications"
                     name: "specs"
                     widget: "list"
+                    required: false
                     fields:
                       - label: "Parameter"
                         name: "parameter"
                         widget: "string"
+                        required: false
                       - label: "Specification"
                         name: "specification"
                         widget: "string"
+                        required: false
+              - label: "Content Blocks"
+                name: "content_blocks"
+                widget: "list"
+                required: false
+                types:
+                  - label: "Text Block"
+                    name: "text_block"
+                    widget: "object"
+                    fields:
+                      - label: "Title"
+                        name: "title"
+                        widget: "string"
+                        required: false
+                      - label: "Text"
+                        name: "text"
+                        widget: "markdown"
+                        required: false
+                  - label: "Gallery Block"
+                    name: "gallery_block"
+                    widget: "object"
+                    fields:
+                      - label: "Images"
+                        name: "images"
+                        widget: "list"
+                        fields:
+                          - label: "Image"
+                            name: "image"
+                            widget: "image"
+                            required: true
+                          - label: "Caption"
+                            name: "caption"
+                            widget: "string"
+                            required: false
+                  - label: "Video Block"
+                    name: "video_block"
+                    widget: "object"
+                    fields:
+                      - label: "Video URL"
+                        name: "video_url"
+                        widget: "string"
+                        required: true
+                        hint: "YouTube or Vimeo embed/watch URL (e.g. https://www.youtube.com/watch?v=... or https://vimeo.com/...)"
 
       - label: "Competitions"
         name: "competitions"
@@ -118,60 +182,77 @@ collections:
               - label: "Acronym"
                 name: "acronym"
                 widget: "string"
+                required: false
               - label: "Year"
                 name: "year"
                 widget: "number"
                 value_type: "int"
+                required: false
               - label: "Location"
                 name: "location"
                 widget: "string"
+                required: false
               - label: "Project ID (FK)"
                 name: "project"
                 widget: "string"
+                required: false
               - label: "Tags"
                 name: "tags"
                 widget: "list"
+                required: false
                 field:
                   name: "tag"
                   widget: "string"
               - label: "Achievements"
                 name: "achievements"
                 widget: "list"
+                required: false
                 fields:
                   - label: "Rank"
                     name: "rank"
                     widget: "string"
+                    required: false
                   - label: "Scope"
                     name: "scope"
                     widget: "string"
+                    required: false
                   - label: "Label"
                     name: "label"
                     widget: "string"
+                    required: false
                   - label: "Detail"
                     name: "detail"
                     widget: "text"
+                    required: false
                   - label: "Text Color"
                     name: "textColor"
                     widget: "string"
+                    required: false
                   - label: "Bg Color"
                     name: "bgColor"
                     widget: "string"
+                    required: false
                   - label: "Border Color"
                     name: "borderColor"
                     widget: "string"
+                    required: false
               - label: "Tabs"
                 name: "tabs"
                 widget: "object"
+                required: false
                 fields:
                   - label: "Overview Tab"
                     name: "overview"
                     widget: "text"
+                    required: false
                   - label: "Context Tab"
                     name: "context"
                     widget: "text"
+                    required: false
                   - label: "Project Tab"
                     name: "project"
                     widget: "text"
+                    required: false
 
   - name: "about"
     label: "About Page"
@@ -184,32 +265,41 @@ collections:
           - label: "Hero Text"
             name: "heroText"
             widget: "string"
+            required: false
           - label: "Mission Statement"
             name: "mission"
             widget: "text"
+            required: false
           - label: "General Description"
             name: "description"
             widget: "text"
+            required: false
           - label: "Social Links"
             name: "socials"
             widget: "object"
+            required: false
             fields:
               - label: "Instagram"
                 name: "instagram"
                 widget: "string"
+                required: false
               - label: "LinkedIn"
                 name: "linkedin"
                 widget: "string"
+                required: false
           - label: "Focus Areas"
             name: "focusAreas"
             widget: "list"
+            required: false
             fields:
               - label: "Title"
                 name: "title"
                 widget: "string"
+                required: false
               - label: "Description"
                 name: "description"
                 widget: "text"
+                required: false
 
   - name: "team"
     label: "Team Roster"
@@ -229,10 +319,12 @@ collections:
               - label: "Role"
                 name: "role"
                 widget: "string"
+                required: false
               - label: "Discipline"
                 name: "discipline"
                 widget: "string"
+                required: false
               - label: "Image"
                 name: "image"
                 widget: "image"
-
+                required: false
