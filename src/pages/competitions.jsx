@@ -9,6 +9,9 @@ export default function CompetitionsPage() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("overview");
 
+  // Accordion state management (only expandedId is needed now)
+  const [expandedId, setExpandedId] = useState(null);
+
   useEffect(() => {
     fetch("/content/competitions.json")
       .then((res) => res.json())
@@ -41,6 +44,10 @@ export default function CompetitionsPage() {
   // Use the first competition as the featured entry
   const comp = competitions[0];
   const TABS = Object.keys(comp.tabs || {});
+
+  const toggleExpand = (id) => {
+    setExpandedId((prev) => (prev === id ? null : id));
+  };
 
   return (
     <div className="min-h-screen bg-[#F8F7FB] font-sans antialiased text-gray-800">
@@ -146,7 +153,7 @@ export default function CompetitionsPage() {
               ))}
             </div>
 
-            <div className="pb-8 max-w-3xl">
+            <div className="pb-8 w-full">
               {activeTab !== "project" && (
                 <p className="text-sm text-gray-600 leading-relaxed">
                   {comp.tabs[activeTab]}
@@ -157,70 +164,196 @@ export default function CompetitionsPage() {
                   <p className="text-sm text-gray-600 leading-relaxed mb-4">
                     {comp.tabs[activeTab]}
                   </p>
-                  <a
-                    href={`/projects/${comp.project}`}
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold hover:opacity-70 transition-opacity no-underline text-wu-purple"
-                  >
-                    View the MustangMotion project
-                    <ChevronRight size={14} aria-hidden="true" />
-                  </a>
+                  
+                  {/* Centered PDF Media Block */}
+                  <div className="mt-4 flex justify-center">
+                    <a 
+                      href={comp.pdf || "/assets/images/mse-and-bme-jan-2026-opd.pdf"}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-4 p-4 border border-gray-300 rounded-none hover:bg-gray-50 hover:border-gray-400 transition-colors w-full max-w-xl text-left no-underline"
+                    >
+                      <div className="flex-shrink-0 bg-red-50 text-red-700 border border-red-200 px-2.5 py-1 text-xs font-mono font-bold tracking-wider rounded-none">
+                        PDF
+                      </div>
+                      <div className="flex-grow min-w-0 pr-4">
+                        <span className="block text-sm font-semibold text-gray-900 truncate no-underline">
+                          {comp.acronym ? `${comp.acronym} Technical Document` : (comp.name ? `${comp.name} Document` : "Technical Document")}
+                        </span>
+                        <span className="block text-[10px] font-mono uppercase tracking-widest text-gray-400 mt-0.5 no-underline">
+                          Click to view attachment
+                        </span>
+                      </div>
+                      <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               )}
             </div>
           </div>
         </div>
 
-        {/* ── Competition Record Table ─────────────────────────── */}
+        {/* ── Competition Record Accordion List ─────────────────── */}
         <SectionLabel>Competition Record</SectionLabel>
 
-        <div className="bg-white rounded-xl overflow-hidden mb-14 border border-[#E8E4F0]">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="bg-[#FDFCFF] border-b border-[#E8E4F0]">
-                {["Competition", "Year", "Project", "Result"].map((h) => (
-                  <th
-                    key={h}
-                    className="px-6 py-3.5 text-left text-xs font-semibold uppercase tracking-widest text-gray-400"
+        <div className="bg-white rounded-xl overflow-hidden mb-14 border border-[#E8E4F0] shadow-[0_1px_4px_rgba(79,38,131,0.02)]">
+          {/* Header Row (Hidden on mobile for better responsiveness) */}
+          <div className="hidden md:flex items-center justify-between gap-4 px-6 py-3.5 bg-[#FDFCFF] border-b border-[#E8E4F0] text-xs font-semibold uppercase tracking-widest text-gray-400 select-none">
+            <div className="grid grid-cols-4 gap-4 flex-grow text-left">
+              <div>Competition</div>
+              <div className="text-center">Year</div>
+              <div className="text-center">Project</div>
+              <div>Result</div>
+            </div>
+            <div className="w-5" /> {/* Empty spacer matching chevron */}
+          </div>
+
+          <div>
+            {competitions.map((c) => {
+              const isExpanded = expandedId === c.id;
+              const tabsList = c.tabs || {};
+
+              return (
+                <div key={c.id} className="border-b border-[#E8E4F0] last:border-b-0">
+                  {/* Clickable Header Row */}
+                  <button
+                    onClick={() => toggleExpand(c.id)}
+                    className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-[#FDFCFF]/30 transition-colors focus:outline-none"
                   >
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {competitions.map((c) => (
-                <tr key={c.id} className="border-b border-[#E8E4F0] last:border-b-0">
-                  <td className="px-6 py-4 font-medium text-gray-800">
-                    {c.name} ({c.acronym})
-                  </td>
-                  <td className="px-6 py-4 text-gray-500">{c.year}</td>
-                  <td className="px-6 py-4 text-gray-500 capitalize">{c.project}</td>
-                  <td className="px-6 py-4">
-                    <div className="flex flex-wrap gap-2">
-                      {c.achievements.map((a) => (
-                        <span
-                          key={a.scope}
-                          className="text-xs px-2 py-0.5 rounded-none font-medium border"
-                          style={{
-                            backgroundColor: a.bgColor,
-                            color: a.textColor,
-                            borderColor: a.borderColor,
-                          }}
-                        >
-                          {a.rank} {a.scope}
-                        </span>
-                      ))}
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 flex-grow items-center text-sm">
+                      <div className="font-semibold text-gray-800">
+                        {c.name} {c.acronym ? `(${c.acronym})` : ''}
+                      </div>
+                      <div className="text-gray-500 md:text-center text-xs md:text-sm">{c.year}</div>
+                      <div className="text-gray-500 capitalize md:text-center text-xs md:text-sm">{c.project}</div>
+                      <div>
+                        <div className="flex flex-wrap gap-2">
+                          {c.achievements && c.achievements.map((a, idx) => (
+                            <span
+                              key={a.scope || idx}
+                              className="text-xs px-2 py-0.5 rounded-none font-medium border"
+                              style={{
+                                backgroundColor: a.bgColor || '#f3f4f6',
+                                color: a.textColor || '#374151',
+                                borderColor: a.borderColor || '#e5e7eb',
+                              }}
+                            >
+                              {a.rank} {a.scope}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                  </td>
-                </tr>
-              ))}
-              <tr>
-                <td className="px-6 py-4 text-xs text-gray-400 italic" colSpan={4}>
-                  Additional competitions to be announced — follow our updates for the 2025 season.
-                </td>
-              </tr>
-            </tbody>
-          </table>
+
+                    {/* Chevron Toggle Icon */}
+                    <div className="flex-shrink-0">
+                      <ChevronRight
+                        size={16}
+                        className={`text-gray-400 transition-transform duration-300 ${
+                          isExpanded ? "rotate-90" : "rotate-0"
+                        }`}
+                      />
+                    </div>
+                  </button>
+
+                  {/* Expandable Accordion Body */}
+                  {isExpanded && (
+                    <div className="px-6 pb-6 pt-2 border-t border-[#F3F0F7] bg-[#FDFCFF]/20">
+                      <div className="mt-4 bg-white rounded-none border border-[#E8E4F0] p-6 shadow-[0_1px_4px_rgba(79,38,131,0.02)]">
+                        {/* Category Tags */}
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {c.tags && c.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="text-xs px-2.5 py-0.5 rounded-none text-wu-purple/80 bg-wu-purple/5 border border-wu-purple/20"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Achievements Grid */}
+                        <div className="mb-6">
+                          <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-3">
+                            Results
+                          </p>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg">
+                            {c.achievements && c.achievements.map((a, idx) => (
+                              <AchievementCard key={a.scope || idx} {...a} />
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Details displayed as a normal list/stack of sections */}
+                        <div className="space-y-6 border-t border-[#E8E4F0] pt-6 text-left w-full">
+                          {tabsList.overview && (
+                            <div>
+                              <h4 className="text-xs font-bold uppercase tracking-wider text-wu-purple mb-1.5">
+                                Overview
+                              </h4>
+                              <p className="text-sm text-gray-600 leading-relaxed">
+                                {tabsList.overview}
+                              </p>
+                            </div>
+                          )}
+                          {tabsList.context && (
+                            <div>
+                              <h4 className="text-xs font-bold uppercase tracking-wider text-wu-purple mb-1.5">
+                                Context
+                              </h4>
+                              <p className="text-sm text-gray-600 leading-relaxed">
+                                {tabsList.context}
+                              </p>
+                            </div>
+                          )}
+                          {tabsList.project && (
+                            <div>
+                              <h4 className="text-xs font-bold uppercase tracking-wider text-wu-purple mb-1.5">
+                                Project
+                              </h4>
+                              <p className="text-sm text-gray-600 leading-relaxed">
+                                {tabsList.project}
+                              </p>
+                              
+                              {/* Centered PDF Media Block */}
+                              <div className="mt-4 flex justify-center">
+                                <a 
+                                  href={c.pdf || "/assets/images/mse-and-bme-jan-2026-opd.pdf"}
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-4 p-4 border border-gray-300 rounded-none hover:bg-gray-50 hover:border-gray-400 transition-colors w-full max-w-xl text-left no-underline"
+                                >
+                                  <div className="flex-shrink-0 bg-red-50 text-red-700 border border-red-200 px-2.5 py-1 text-xs font-mono font-bold tracking-wider rounded-none">
+                                    PDF
+                                  </div>
+                                  <div className="flex-grow min-w-0 pr-4">
+                                    <span className="block text-sm font-semibold text-gray-900 truncate no-underline">
+                                      {c.acronym ? `${c.acronym} Technical Document` : (c.name ? `${c.name} Document` : "Technical Document")}
+                                    </span>
+                                    <span className="block text-[10px] font-mono uppercase tracking-widest text-gray-400 mt-0.5 no-underline">
+                                      Click to view attachment
+                                    </span>
+                                  </div>
+                                  <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                  </svg>
+                                </a>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+            <div className="border-t border-[#E8E4F0] px-6 py-4 text-xs text-gray-400 italic">
+              Additional competitions to be announced — follow our updates for the 2025 season.
+            </div>
+          </div>
         </div>
 
         {/* ── Recruitment CTA ─────────────────────────────────── */}
