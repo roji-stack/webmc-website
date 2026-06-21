@@ -33,6 +33,91 @@ const AchievementCard = ({ rank = "Rank", scope = "Scope", detail = "Detail" }) 
   </div>
 );
 
+// AboutPreview component
+function AboutPreview({ entry }) {
+  const rawData = entry.getIn(['data']);
+  if (!rawData) return <div className="p-8 text-center text-gray-500 font-serif">Loading preview data...</div>;
+
+  const data = rawData.toJS();
+  
+  const heroText = data.heroText || "We build clinical-grade medical hardware.";
+  const missionText = data.mission || "Our mission is to design, prototype, and validate clinical-grade medical hardware...";
+  const descriptionText = data.description || "Established in 2023...";
+  const focusAreas = data.focusAreas || [];
+
+  return (
+    <div className="min-h-screen bg-[#F8F7FB] font-sans antialiased text-gray-800 flex flex-col justify-between p-4">
+      {/* ── Main Content ───────────────────────────────────────── */}
+      <main className="max-w-5xl mx-auto px-6 py-16 flex-grow flex flex-col items-start justify-center w-full">
+        {/* Hero Section */}
+        <section className="text-left mb-16 max-w-4xl w-full">
+          <span className="text-xs font-bold uppercase tracking-widest text-wu-purple mb-4 block">
+            Western Engineering Biomedical Engineering Club
+          </span>
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 font-serif leading-tight">
+            {heroText}
+          </h1>
+          <p className="text-base text-gray-600 max-w-3xl mb-8 leading-relaxed whitespace-pre-wrap">
+            {descriptionText}
+          </p>
+
+          {/* Focus Areas Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 w-full text-left">
+            {(focusAreas.length > 0 ? focusAreas : [
+              {
+                title: "Mechanical Engineering",
+                description: "Structural design, kinematic joint modeling, and rapid prototyping..."
+              },
+              {
+                title: "Embedded Systems",
+                description: "Multi-sensor fusion, low-power Bluetooth (BLE) telemetry pipelines..."
+              },
+              {
+                title: "Clinical Medicine",
+                description: "Direct validation with clinical collaborators..."
+              }
+            ]).map((area, idx) => (
+              <div key={idx} className="bg-white p-6 border border-wu-purple/40 rounded-none hover:border-wu-purple transition-colors">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-wu-purple mb-3 font-serif">
+                  {area?.title || "Focus Area"}
+                </h3>
+                <p className="text-xs text-gray-600 leading-relaxed whitespace-pre-wrap">
+                  {area?.description || "Description placeholder"}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-4 justify-start">
+            <span className="px-6 py-3 rounded text-sm font-semibold text-white bg-wu-purple">
+              Explore Projects (Preview Mode)
+            </span>
+            <span className="px-6 py-3 rounded text-sm font-semibold text-wu-purple bg-white border border-[#E8E4F0]">
+              Competition Record (Preview Mode)
+            </span>
+          </div>
+        </section>
+
+        {/* Mission Statement Callout */}
+        <section className="w-full max-w-3xl bg-white border border-[#E8E4F0] rounded-xl p-8 md:p-10 shadow-[0_4px_20px_rgba(79,38,131,0.02)] relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-2 h-full bg-wu-purple"></div>
+          <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+            Our Mission
+          </h2>
+          <p className="text-lg md:text-xl text-gray-800 font-serif leading-relaxed italic">
+            "{missionText}"
+          </p>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="text-center py-8 text-xs text-gray-400 border-t border-[#E8E4F0]">
+        © 2024 Western Engineering Biomedical Engineering Club · Western University, London, Ontario
+      </footer>
+    </div>
+  );
+}
+
 // TeamPreview component
 function TeamPreview({ entry, getAsset }) {
   const rawData = entry.getIn(['data']);
@@ -424,7 +509,11 @@ CMS.registerPreviewTemplate('projects', ({ entry, getAsset }) => (
   </MemoryRouter>
 ));
 CMS.registerPreviewTemplate('team', TeamPreview);
+CMS.registerPreviewTemplate('team_members', TeamPreview);
 CMS.registerPreviewTemplate('competitions', CompetitionsPreview);
+CMS.registerPreviewTemplate('about', AboutPreview);
+CMS.registerPreviewTemplate('about_content', AboutPreview);
 
 // Initialize the CMS app manually
 CMS.init();
+

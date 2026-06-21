@@ -42,6 +42,11 @@
         {
           "type": "video_block",
           "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        },
+        {
+          "type": "pdf_block",
+          "title": "test",
+          "file": "/assets/images/mse-and-bme-jan-2026-opd.pdf"
         }
       ],
       "tagline": "Smart diagnostic knee brace",
@@ -110,6 +115,13 @@
       "coverImage": "/assets/images/webmc.png",
       "summary": "Testing",
       "slug": "test",
+      "content_blocks": [
+        {
+          "type": "text_block",
+          "title": "Project Overview",
+          "text": "This is a placeholder project created for testing layout configurations and CMS integration blocks."
+        }
+      ],
       "tagline": "testing",
       "detail": {
         "problem": "I was testing this",
@@ -134,14 +146,7 @@
       "status": "completed",
       "title": "TEST!",
       "id": "test",
-      "year": 2035,
-      "content_blocks": [
-        {
-          "type": "text_block",
-          "title": "Project Overview",
-          "text": "This is a placeholder project created for testing layout configurations and CMS integration blocks."
-        }
-      ]
+      "year": 2035
     }
   ]
 }

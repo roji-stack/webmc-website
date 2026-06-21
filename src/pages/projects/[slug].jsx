@@ -294,6 +294,36 @@ export default function ProjectDetailPage() {
             </section>
           );
         }
+        case "pdf_block": {
+          const hasFile = block && block.file;
+          if (!hasFile) return null;
+
+          return (
+            <section key={index} className="bg-white rounded-none p-8 border border-[#E8E4F0] mb-8 shadow-[0_1px_4px_rgba(79,38,131,0.02)] flex justify-center">
+              <a 
+                href={block.file}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-4 p-4 border border-gray-300 rounded-none hover:bg-gray-50 hover:border-gray-400 transition-colors w-full max-w-xl text-left"
+              >
+                <div className="flex-shrink-0 bg-red-50 text-red-700 border border-red-200 px-2.5 py-1 text-xs font-mono font-bold tracking-wider rounded-none">
+                  PDF
+                </div>
+                <div className="flex-grow min-w-0 pr-4">
+                  <span className="block text-sm font-semibold text-gray-900 truncate">
+                    {block.title || "Technical Document"}
+                  </span>
+                  <span className="block text-[10px] font-mono uppercase tracking-widest text-gray-400 mt-0.5">
+                    Click to view attachment
+                  </span>
+                </div>
+                <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </section>
+          );
+        }
         default:
           return null;
       }
